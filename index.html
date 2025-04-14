@@ -9,8 +9,64 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <style>
+        /* 添加音频播放按钮样式 */
+        .play-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 2px solid #b0c4de;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .play-button.playing {
+            background-color: #f0f8ff;
+            border-color: #4a90e2;
+        }
+
+        .play-button::before {
+            content: "▶";
+            color: #4a90e2;
+            font-size: 18px;
+        }
+
+        .play-button.playing::before {
+            content: "⏸";
+        }
+
+        .module {
+            position: relative;
+        }
+
+        .audio-element {
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <!-- 添加音频元素 -->
+    <audio id="audio-basic-info" class="audio-element" src="audio/basic-info.mp3"></audio>
+    <audio id="audio-creative-team" class="audio-element" src="audio/creative-team.mp3"></audio>
+    <audio id="audio-cast" class="audio-element" src="audio/cast.mp3"></audio>
+    <audio id="audio-plot" class="audio-element" src="audio/plot.mp3"></audio>
+    <audio id="audio-artistic" class="audio-element" src="audio/artistic.mp3"></audio>
+    <audio id="audio-behind-scenes" class="audio-element" src="audio/behind-scenes.mp3"></audio>
+    <audio id="audio-reception" class="audio-element" src="audio/reception.mp3"></audio>
+
     <div class="container">
         <header class="header">
             <div class="header-content">
@@ -34,11 +90,12 @@
         </nav>
 
         <main class="content">
-            <section id="basic-info" class="section">
+            <section id="basic-info" class="section module">
                 <div class="section-header">
                     <h2>基本信息</h2>
                     <div class="section-decoration"></div>
                 </div>
+                <button class="play-button" data-audio="audio-basic-info"></button>
                 <div class="info-card">
                     <div class="info-item">
                         <span class="info-label">剧名</span>
@@ -71,11 +128,12 @@
                 </div>
             </section>
 
-            <section id="team" class="section">
+            <section id="team" class="section module">
                 <div class="section-header">
                     <h2>创作团队</h2>
                     <div class="section-decoration"></div>
                 </div>
+                <button class="play-button" data-audio="audio-creative-team"></button>
                 <div class="team-container">
                     <div class="team-group">
                         <h3>导演团队</h3>
@@ -97,11 +155,12 @@
                 </div>
             </section>
 
-            <section id="cast" class="section">
+            <section id="cast" class="section module">
                 <div class="section-header">
                     <h2>演员阵容</h2>
                     <div class="section-decoration"></div>
                 </div>
+                <button class="play-button" data-audio="audio-cast"></button>
                 <div class="cast-container">
                     <div class="cast-card">
                         <div class="cast-image" id="renjianlun"></div>
@@ -121,11 +180,12 @@
                 <p class="cast-note">该剧集结了众多实力派演员，共同打造了一个人妖共存的奇幻世界</p>
             </section>
 
-            <section id="plot" class="section">
+            <section id="plot" class="section module">
                 <div class="section-header">
                     <h2>剧情简介</h2>
                     <div class="section-decoration"></div>
                 </div>
+                <button class="play-button" data-audio="audio-plot"></button>
                 <div class="plot-content">
                     <p>《无忧渡》讲述了神秘的捉妖师久宣夜（任嘉伦 饰）与能看到妖的少女半夏（宋祖儿 饰）在人妖共存的世界中共同历经奇情悬案，最终揭开两人身世之谜，并发展出一段浪漫爱情的奇幻故事。</p>
                     <p>半夏因为能看到妖怪，常被人当做疯子，只有久宣夜相信并帮助她。随着故事发展，两人关系逐渐亲密，但更大的秘密也随之浮出水面——久宣夜发现自己竟然也是妖！这一发现对一位信念坚定的捉妖师来说，无疑是一个巨大的冲击和挑战。</p>
@@ -133,11 +193,12 @@
                 </div>
             </section>
 
-            <section id="artistic" class="section">
+            <section id="artistic" class="section module">
                 <div class="section-header">
                     <h2>艺术特色</h2>
                     <div class="section-decoration"></div>
                 </div>
+                <button class="play-button" data-audio="audio-artistic"></button>
                 <div class="artistic-container">
                     <div class="artistic-card">
                         <div class="artistic-icon">
@@ -164,22 +225,24 @@
                 </div>
             </section>
 
-            <section id="behind" class="section">
+            <section id="behind" class="section module">
                 <div class="section-header">
                     <h2>幕后花絮</h2>
                     <div class="section-decoration"></div>
                 </div>
+                <button class="play-button" data-audio="audio-behind-scenes"></button>
                 <div class="behind-content">
                     <p>拍摄期间，任嘉伦与宋祖儿在象山拍摄现场展现了默契十足的合作。从流出的花絮视频可以看出，两位主演在塑造角色时付出了大量努力，无论是对台词的理解还是情感表达方面，都展现出了极高的专业素养。</p>
                     <p>制作团队在打造这部剧时融合了唐朝的历史背景、志怪的故事元素以及悬疑的剧情，为观众呈现了一个充满神秘与奇幻的世界。任嘉伦的古装造型一直备受赞誉，他在剧中的表现也让人印象深刻。</p>
                 </div>
             </section>
 
-            <section id="audience" class="section">
+            <section id="audience" class="section module">
                 <div class="section-header">
                     <h2>观众反响</h2>
                     <div class="section-decoration"></div>
                 </div>
+                <button class="play-button" data-audio="audio-reception"></button>
                 <div class="audience-container">
                     <div class="audience-card positive">
                         <h3>正面评价</h3>
@@ -243,5 +306,58 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modules = document.querySelectorAll('.module');
+            const playButtons = document.querySelectorAll('.play-button');
+            const audioElements = document.querySelectorAll('.audio-element');
+
+            // 停止所有音频播放
+            function stopAllAudio() {
+                audioElements.forEach(audio => {
+                    audio.pause();
+                    audio.currentTime = 0;
+                });
+                playButtons.forEach(button => button.classList.remove('playing'));
+            }
+
+            // 处理音频播放和模块切换
+            playButtons.forEach((button, index) => {
+                const audioId = button.getAttribute('data-audio');
+                const audio = document.getElementById(audioId);
+
+                button.addEventListener('click', () => {
+                    if (audio.paused) {
+                        stopAllAudio();
+                        audio.play();
+                        button.classList.add('playing');
+                        modules[index].scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    } else {
+                        audio.pause();
+                        button.classList.remove('playing');
+                    }
+                });
+
+                // 音频播放结束时
+                audio.addEventListener('ended', () => {
+                    button.classList.remove('playing');
+                    // 如果不是最后一个音频，播放下一个
+                    if (index < playButtons.length - 1) {
+                        const nextButton = playButtons[index + 1];
+                        const nextAudio = document.getElementById(nextButton.getAttribute('data-audio'));
+                        nextButton.classList.add('playing');
+                        nextAudio.play();
+                        modules[index + 1].scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
