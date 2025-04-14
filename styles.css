@@ -1,0 +1,566 @@
+/* 基础样式设置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #8B4513;  /* 古铜色 */
+    --secondary-color: #A0522D; /* 赭石色 */
+    --accent-color: #CD5C5C;    /* 印度红 */
+    --text-color: #3A2E28;      /* 深棕色 */
+    --light-text: #7D6E6A;      /* 灰棕色 */
+    --background-color: #F5E8DC; /* 米黄色 */
+    --card-bg: #FFF8EE;         /* 浅米色 */
+    --border-radius: 8px;
+    --shadow: 0 4px 20px rgba(139, 69, 19, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+    background-image: url('data:image/png;base64,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');
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 头部样式 */
+.header {
+    background: linear-gradient(135deg, #D2B48C 0%, #8B4513 100%);
+    color: #FFF8DC;
+    padding: 80px 0;
+    text-align: center;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #A0522D;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/无忧渡.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.title {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-family: 'ZCOOL XiaoWei', serif;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.header-decoration {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #FFF8DC, transparent);
+    margin: 0 auto;
+}
+
+/* 导航样式 */
+.nav {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+    border: 1px solid #D2B48C;
+}
+
+.nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    overflow-x: auto;
+}
+
+.nav li {
+    padding: 15px 0;
+}
+
+.nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: var(--transition);
+    white-space: nowrap;
+    font-family: 'ZCOOL XiaoWei', serif;
+}
+
+.nav a:hover {
+    background-color: rgba(139, 69, 19, 0.1);
+    color: var(--primary-color);
+}
+
+/* 内容区域样式 */
+.content {
+    margin-bottom: 50px;
+}
+
+.section {
+    margin-bottom: 50px;
+    padding: 30px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border: 1px solid #D2B48C;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAFVklEQVR4XpWWB67c2BUFb3g557T/hRo9/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dmYRFZ60YiBhJRCgh1FYhiLAmdvX0CzTOpNE77ME0Zty/nWWzchDtiqrmQDeuv3powQ5ta2eN0FY0InkqDD73lT9c9lEzwUNqgFHs9VQce3TVClFCQrSTfOiYkVJQBmpbq2L6iZavPnAPcoU0dSw0SUTqz/GtrGuXfbyyBniKykOWQWGqwwMA7QiYAxi+IlPdqo+hYHnUt5ZPfnsHJyNiDtnpJyayNBkF6cWoYGAMY92U2hXHF/C1M8uP/ZtYdiuj26UdAdQQSXQErwSOMzt/XWRWAz5GuSBIkwG1H3FabJ2OsUOUhGC6tK4EMtJO0ttC6IBD3kM0ve0tJwMdSfjZo+EEISaeTr9P3wYrGjXqyC1krcKdhMpxEnt5JetoulscpyzhXN5FRpuPHvbeQaKxFAEB6EN+cYN6xD7RYGpXpNndMmZgM5Dcs3YSNFDHUo2LGfZuukSWyUYirJAdYbF3MfqEKmjM+I2EfhA94iG3L7uKrR+GdWD73ydlIB+6hgref1QTlmgmbM3/LeX5GI1Ux1RWpgxpLuZ2+I+IjzZ8wqE4nilvQdkUdfhzI5QDWy+kw5Wgg2pGpeEVeCCA7b85BO3F9DzxB3cdqvBzWcmzbyMiqhzuYqtHRVG2y4x+KOlnyqla8AoWWpuBoYRxzXrfKuILl6SfiWCbjxoZJUaCBj1CjH7GIaDbc9kqBY3W/Rgjda1iqQcOJu2WW+76pZC9QG7M00dffe9hNnseupFL53r8F7YHSwJWUKP2q+k7RdsxyOB11n0xtOvnW4irMMFNV4H0uqwS5ExsmP9AxbDTc9JwgneAT5vTiUSm1E7BSflSt3bfa1tv8Di3R8n3Af7MNWzs49hmauE2wP+ttrq+AsWpFG2awvsuOqbipWHgtuvuaAE+A1Z/7gC9hesnr+7wqCwG8c5yAg3AL1fm8T9AZtp/bbJGwl1pNrE7RuOX7PeMRUERVaPpEs+yqeoSmuOlokqw49pgomjLeh7icHNlG19yjs6XXOMedYm5xH2YxpV2tc0Ro2jJfxC50ApuxGob7lMsxfTbeUv07TyYxpeLucEH1gNd4IKH2LAg5TdVhlCafZvpskfncCfx8pOhJzd76bJWeYFnFciwcYfubRc12Ip/ppIhA1/mSZ/RxjFDrJC5xifFjJpY2Xl5zXdguFqYyTR1zSp1Y9p+tktDYYSNflcxI0iyO4TPBdlRcpeqjK/piF5bklq77VSEaA+z8qmJTFzIWiitbnzR794USKBUaT0NTEsVjZqLaFVqJoPN9ODG70IPbfBHKK+/q/AWR0tJzYHRULOa4MP+W/HfGadZUbfw177G7j/OGbIs8TahLyynl4X4RinF793Oz+BU0saXtUHrVBFT/DnA3ctNPoGbs4hRIjTok8i+algT1lTHi4SxFvONKNrgQFAq2/gFnWMXgwffgYMJpiKYkmW3tTg3ZQ9Jq+f8XN+A5eeUKHWvJWJ2sgJ1Sop+wwhqFVijqWaJhwtD8MNlSBeWNNWTa5Z5kPZw5+LbVT99wqTdx29lMUH4OIG/D86ruKEauBjvH5xy6um/Sfj7ei6UUVk4AIl3MyD4MSSTOFgSwsH/QJWaQ5as7ZcmgBZkzjjU1UrQ74ci1gWBCSGHtuV1H2mhSnO3Wp/3fEV5a+4wz//6qy8JxjZsmxxy5+4w9CDNJY09T072iKG0EnOS0arEYgXqYnXcYHwjTtUNAcMelOd4xpkoqiTYICWFq0JSiPfPDQdnt+4/wuqcXY47QILbgAAAABJRU5ErkJggg==');
+}
+
+.section-header {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.section h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-family: 'ZCOOL XiaoWei', serif;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.section h2::before, .section h2::after {
+    content: '❖';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-color);
+    font-size: 1rem;
+}
+
+.section h2::before {
+    left: 0;
+}
+
+.section h2::after {
+    right: 0;
+}
+
+.section-decoration {
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    margin: 0 auto;
+}
+
+/* 基本信息卡片样式 */
+.info-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.info-item {
+    padding: 15px;
+    background-color: rgba(139, 69, 19, 0.05);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    border-color: rgba(139, 69, 19, 0.3);
+}
+
+.info-label {
+    display: block;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.info-value {
+    color: var(--text-color);
+}
+
+/* 创作团队样式 */
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.team-group h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
+    font-family: 'ZCOOL XiaoWei', serif;
+}
+
+.team-list {
+    list-style: none;
+}
+
+.team-list li {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(139, 69, 19, 0.05);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.team-list li:hover {
+    background-color: rgba(139, 69, 19, 0.1);
+    border-color: rgba(139, 69, 19, 0.3);
+}
+
+.team-role {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+/* 演员阵容样式 */
+.cast-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.cast-card {
+    width: 250px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid #D2B48C;
+}
+
+.cast-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(139, 69, 19, 0.2);
+    border-color: var(--primary-color);
+}
+
+.cast-image {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid rgba(139, 69, 19, 0.2);
+}
+
+#renjianlun {
+    background-image: url('images/任嘉伦.jpg');
+}
+
+#songzuer {
+    background-image: url('images/宋祖儿.jpg');
+}
+
+.cast-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.cast-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-family: 'ZCOOL XiaoWei', serif;
+}
+
+.cast-note {
+    text-align: center;
+    font-style: italic;
+    color: var(--light-text);
+    margin-top: 20px;
+}
+
+/* 剧情简介样式 */
+.plot-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    text-indent: 2em;
+}
+
+/* 艺术特色样式 */
+.artistic-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.artistic-card {
+    padding: 30px;
+    background-color: rgba(139, 69, 19, 0.05);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.artistic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    border-color: rgba(139, 69, 19, 0.3);
+}
+
+.artistic-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.artistic-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'ZCOOL XiaoWei', serif;
+}
+
+.artistic-card ul {
+    list-style: none;
+}
+
+.artistic-card li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.artistic-card li::before {
+    content: '✦';
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+}
+
+/* 幕后花絮样式 */
+.behind-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    text-indent: 2em;
+}
+
+/* 观众反响样式 */
+.audience-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.audience-card {
+    padding: 30px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.audience-card.positive {
+    background-color: rgba(107, 142, 35, 0.1);
+    border-color: rgba(107, 142, 35, 0.3);
+}
+
+.audience-card.negative {
+    background-color: rgba(178, 34, 34, 0.05);
+    border-color: rgba(178, 34, 34, 0.2);
+}
+
+.audience-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'ZCOOL XiaoWei', serif;
+}
+
+.audience-card.positive h3 {
+    color: #556B2F;
+}
+
+.audience-card.negative h3 {
+    color: #8B0000;
+}
+
+.audience-card ul {
+    list-style: none;
+}
+
+.audience-card li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.audience-card li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+}
+
+.audience-card.positive li::before {
+    color: #556B2F;
+}
+
+.audience-card.negative li::before {
+    color: #8B0000;
+}
+
+.audience-point {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.audience-card.positive .audience-point {
+    color: #556B2F;
+}
+
+.audience-card.negative .audience-point {
+    color: #8B0000;
+}
+
+/* 市场表现样式 */
+.market-content p {
+    margin-bottom: 30px;
+    line-height: 1.8;
+    text-indent: 2em;
+}
+
+.market-stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(139, 69, 19, 0.05);
+    border-radius: var(--border-radius);
+    min-width: 150px;
+    transition: var(--transition);
+    border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    border-color: rgba(139, 69, 19, 0.3);
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.stat-value span {
+    font-size: 1rem;
+    color: var(--light-text);
+}
+
+.stat-label {
+    color: var(--light-text);
+}
+
+/* 结语样式 */
+.conclusion-content p {
+    line-height: 1.8;
+    text-indent: 2em;
+}
+
+/* 页脚样式 */
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    color: var(--light-text);
+    border-top: 1px solid rgba(139, 69, 19, 0.1);
+    background-color: rgba(139, 69, 19, 0.05);
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav li {
+        margin: 5px;
+    }
+    
+    .section {
+        padding: 20px;
+    }
+    
+    .info-card, .team-container, .artistic-container, .audience-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .cast-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cast-card {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .stat-item {
+        width: 100%;
+    }
+}
